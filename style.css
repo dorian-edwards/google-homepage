@@ -4,6 +4,7 @@
   /* font-family: 'Cantarell', sans-serif; */
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  font-size: 13px;
 }
 
 button:hover {
@@ -35,8 +36,7 @@ nav {
   font-size: 13px;
 }
 
-#nav-1,
-#footer-4 {
+#nav-1 {
   display: none;
 }
 
@@ -49,8 +49,7 @@ nav button {
   border-radius: 3px;
 }
 
-nav ul li,
-footer ul li {
+nav ul li {
   display: inline-block;
 }
 
@@ -118,26 +117,17 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  justify-content: space-between;
   min-height: 50px;
   background: #f7f7f7;
   color: #666;
-  padding: 0 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
 }
 
-#footer-1,
-#footer-2,
-#footer-3 {
-  min-width: 300px;
-}
-
-#footer-1 ul,
-#footer-3 ul {
-  justify-content: center;
-}
-
-#footer-2 {
-  justify-content: center;
+footer ul li {
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 
 #footer-2 img {
@@ -163,7 +153,16 @@ footer {
 .align-center {
   display: flex;
   align-items: center;
+  text-align: center;
   font-size: 14px;
+}
+
+.txt-ctr {
+  text-align: center;
+}
+
+.pd-low {
+  padding: 1em 0;
 }
 
 /* Responsive Styling */
@@ -174,14 +173,11 @@ footer {
 
   #nav-2,
   #gmail,
-  #images,
-  #footer-1,
-  #footer-2 {
+  #images {
     display: none;
   }
 
-  #nav-1,
-  #footer-4 {
+  #nav-1 {
     display: block;
   }
 
@@ -192,18 +188,6 @@ footer {
     font-weight: 500;
   }
 
-  footer.align-center {
-    display: block;
-    padding-bottom: 0.75rem;
-  }
-
-  #footer-3 ul,
-  #footer-4 ul {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem 4rem;
-  }
-
   #settings {
     order: 1;
   }
@@ -212,5 +196,45 @@ footer {
   }
   #terms {
     order: 3;
+  }
+}
+
+@media screen and (max-width: 1201px) {
+  footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  /* grid-area: horizontal line to start at / vertical line to start at / horizontal line to end at / vertical line to end at;
+ */
+
+  #footer-1 {
+    grid-area: 2/1/3/2;
+  }
+  #footer-2 {
+    grid-area: 1/1/2/3;
+  }
+  #footer-3 {
+    grid-area: 2/2/3/3;
+  }
+}
+
+@media screen and (max-width: 597px) {
+  footer {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  #footer-1 {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  #footer-2 {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  #footer-3 {
+    grid-row: 3;
+    grid-column: 1;
   }
 }
